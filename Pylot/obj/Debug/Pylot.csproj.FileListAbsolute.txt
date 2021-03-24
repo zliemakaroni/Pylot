@@ -1,0 +1,15 @@
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.csprojAssemblyReference.cache
+C:\Rock Solid\Pylot\Pylot\obj\Debug\MainWindow.g.cs
+C:\Rock Solid\Pylot\Pylot\obj\Debug\App.g.cs
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot_MarkupCompile.cache
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot_MarkupCompile.lref
+C:\Rock Solid\Pylot\Pylot\bin\Debug\Pylot.exe.config
+C:\Rock Solid\Pylot\Pylot\bin\Debug\Pylot.exe
+C:\Rock Solid\Pylot\Pylot\bin\Debug\Pylot.pdb
+C:\Rock Solid\Pylot\Pylot\obj\Debug\MainWindow.baml
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.g.resources
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.Properties.Resources.resources
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.csproj.GenerateResource.cache
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.csproj.CoreCompileInputs.cache
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.exe
+C:\Rock Solid\Pylot\Pylot\obj\Debug\Pylot.pdb

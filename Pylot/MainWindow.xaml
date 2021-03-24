@@ -1,0 +1,29 @@
+﻿<Window x:Name="focus" x:Class="Pylot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pylot"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="792" WindowState="Maximized" FocusManager.FocusedElement="{Binding ElementName=WorkCanvas}" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False" Click="Start_Click"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False"/>
+        <Button Content="Button" Grid.Column="2" HorizontalAlignment="Center" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False"/>
+        <Border x:Name="CanvasBorder" Grid.ColumnSpan="3" Grid.Row="0" BorderBrush="red" BorderThickness="3">
+            <Canvas x:Name="WorkCanvas" Grid.ColumnSpan="3" Grid.Row="0" KeyDown="Canvas_KeyDown" Focusable="True">
+                <Image x:Name="target" Height="30" Canvas.Left="0" Canvas.Top="0" Width="30" Source="res/target.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Image x:Name="pointer" Height="25" Canvas.Left="0" Canvas.Top="0" Width="25" Source="res/pointer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Canvas>
+        </Border>
+    </Grid>
+</Window>
