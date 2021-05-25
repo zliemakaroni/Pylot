@@ -1,0 +1,15 @@
+﻿<Window x:Class="Pylot.NotSavedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pylot"
+        mc:Ignorable="d"
+        Title="Изменения не сохранены" Height="200" Width="400" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Label Content="Изменения не сохранены! Хотите продолжить?" HorizontalAlignment="Center" Margin="28,50,23,66" VerticalAlignment="Center" FontSize="14" Height="53" Width="341"/>
+        <Button x:Name="NoButton" Content="Нет" HorizontalAlignment="Left" Margin="78,124,0,0" VerticalAlignment="Top" Width="75" Click="NoButton_Click"/>
+        <Button x:Name="YesButton" Content="Да" HorizontalAlignment="Left" Margin="230,124,0,0" VerticalAlignment="Top" Width="75" Click="YesButton_Click"/>
+
+    </Grid>
+</Window>

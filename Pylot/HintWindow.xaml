@@ -1,0 +1,14 @@
+﻿<Window x:Class="Pylot.HintWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pylot"
+        mc:Ignorable="d"
+        Title="Инструкция" Height="529.856" Width="889.496" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Button x:Name="StartProbeButton" Content="Начать пробу" HorizontalAlignment="Left" Margin="225,427,0,0" VerticalAlignment="Top" Width="142" Height="38" Click="StartProbeButton_Click"/>
+        <Button x:Name="StartTestButton" Content="Перейти к тесту" HorizontalAlignment="Left" Margin="505,427,0,0" VerticalAlignment="Top" Width="142" Height="38" Click="StartTestButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="34,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="350" Width="819" FontSize="20"><Run Text="При помощи джойстика в течение первых 40 секунд Вам необходимо удерживать в «прицеле» перемещающийся по вертикали шарик. На 41-ой секунде, после того как шарик и «прицел» исчезнут с экрана, Вы продолжаете управлять джойстиком в прежнем темпе, мысленно представляя траекторию движения шарика и мишени. Чем дольше Вы сможете отслеживать невидимую цель, тем выше результат. Тест завершится автоматически, как только невидимые шарик и прицел окажутся в противофазе."/><LineBreak/><Run/><LineBreak/><Run Text="Сейчас Вам будет предоставлен пробный режим. В этом режиме "/><Run Text="Вы можете остановиться в любой момент"/><Run Text="."/><Run Text=" Ограничение времени пробного режима - 60 секунд."/><Run Text=" Для изменения чувствительности джойстика нажмите кнопку "/><Run Text="&quot;"/><Run Text="настройки"/><Run Text="&quot;"/><Run Text="."/><Run Text=" Если Вы хотите пропустить пробный режим и перийти к тесту, нажмите соответствующую кнопку."/></TextBlock>
+    </Grid>
+</Window>

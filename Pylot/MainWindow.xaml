@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pylot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="792" WindowState="Maximized" FocusManager.FocusedElement="{Binding ElementName=WorkCanvas}" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="Исследование вероятностного прогнозирования" Height="450" Width="792" WindowState="Maximized" FocusManager.FocusedElement="{Binding ElementName=WorkCanvas}" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -15,15 +15,39 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False" Click="Start_Click"/>
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False"/>
-        <Button Content="Button" Grid.Column="2" HorizontalAlignment="Center" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False"/>
-        <Border x:Name="CanvasBorder" Grid.ColumnSpan="3" Grid.Row="0" BorderBrush="red" BorderThickness="3">
-            <Canvas x:Name="WorkCanvas" Grid.ColumnSpan="3" Grid.Row="0" KeyDown="Canvas_KeyDown" Focusable="True">
-                <Image x:Name="target" Height="30" Canvas.Left="0" Canvas.Top="0" Width="30" Source="res/target.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Image x:Name="pointer" Height="25" Canvas.Left="0" Canvas.Top="0" Width="25" Source="res/pointer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Name="StartTestButton" Content="Начать" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False" Click="StartTest_Click" IsEnabled="False" Visibility="Hidden"/>
+        <Button Name="ResultButton" Content="Результат" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False" Click="ResultButton_Click" IsEnabled="False"/>
+        <Button Name="CloseButton" Content="Выход" Grid.Column="3" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Focusable="False" Click="CloseButton_Click"/>
+        <Border Name="CanvasBorder" Grid.ColumnSpan="4" Grid.Row="0" BorderBrush="red">
+            <Canvas x:Name="WorkCanvas" Focusable="True" ClipToBounds="True" Background="#FF5D5D5D">
+                <Canvas.CacheMode>
+                    <BitmapCache EnableClearType="False" 
+                 RenderAtScale="1" 
+                 SnapsToDevicePixels="False"  />
+                </Canvas.CacheMode>
+                <Image x:Name="target" Height="25" Canvas.Left="0" Canvas.Top="0" Width="25" Source="res/target.png" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False">
+                    <Image.CacheMode>
+                        <BitmapCache EnableClearType="False" 
+                 RenderAtScale="1" 
+                 SnapsToDevicePixels="False"  />
+                    </Image.CacheMode>
+                </Image>
+                <Image x:Name="pointer" Height="25" Canvas.Left="0" Canvas.Top="0" Width="25" Source="res/pointer.png" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False">
+                    <Image.CacheMode>
+                        <BitmapCache EnableClearType="False" 
+                 RenderAtScale="1" 
+                 SnapsToDevicePixels="False"  />
+                    </Image.CacheMode>
+                </Image>
             </Canvas>
         </Border>
+        <ProgressBar x:Name="progressBar" Grid.ColumnSpan="4" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="20" Maximum="60"/>
+        <Button x:Name="SettingsButton" Content="Настройки" Grid.Column="1" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Click="Settings_Click"/>
+        <Button x:Name="StartProbeButton"  Content="Начать Пробу"  HorizontalAlignment="Center" Margin="40,10,40,40" Grid.Row="1" VerticalAlignment="Center" Width="96" Click="StartProbeButton_Click" IsEnabled="False"/>
+        <Button x:Name="StopProbeButton" Content="Стоп" HorizontalAlignment="Center" Margin="40,40,40,10" Grid.Row="1" VerticalAlignment="Center" Width="96" Click="StopProbeButton_Click" IsEnabled="False"/>
+        <Button x:Name="ToTestButton" Content="Перейти к тесту" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Click="ToTestButton_Click" IsEnabled="False"/>
+        <Label x:Name="StatusLabel" Content="" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" FontSize="14"/>
     </Grid>
 </Window>

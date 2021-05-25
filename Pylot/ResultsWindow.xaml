@@ -1,0 +1,114 @@
+﻿<Window x:Class="Pylot.ResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:Pylot"
+        mc:Ignorable="d"
+        Title="Результаты теста" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <oxy:Plot x:Name="PFOPlot" Title="Процесс формирования динамического образа" Grid.ColumnSpan="7" LegendPlacement="Outside" LegendPosition="RightMiddle">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding FormingTargetPoints}" Color="Orange" Title="Точка-метка"/>
+                <oxy:LineSeries ItemsSource="{Binding FormingPointerPoints}" Color="Green" Title="Точка-визир"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+        <oxy:Plot x:Name="PPOPlot" Title="Процесс слежения на основе образа &quot;вслепую&quot;" Grid.ColumnSpan="7" Grid.Row="1" LegendPlacement="Outside" LegendPosition="RightMiddle">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding BlindTargetPoints}" Color="Orange" Title="Точка-метка"/>
+                <oxy:LineSeries ItemsSource="{Binding BlindPointerPoints}" Color="Green" Title="Точка-визир"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+        <oxy:Plot x:Name="DiffPlot" Title="Коэффициент отклонения" Grid.ColumnSpan="7" Grid.Row="2" LegendPlacement="Outside" LegendPosition="RightMiddle">
+            <oxy:Plot.Series>
+                <oxy:TwoColorLineSeries ItemsSource="{Binding DiffPoints}" Title="&gt;0.3" Color="Red" Color2="Blue" Limit="0.3"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+        <Button x:Name="NewGameButton" Content="Заново" Grid.Column="4" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Width="75" Click="NewGameButton_Click"/>
+        <Button x:Name="ExitResultsButton" Content="Закрыть" Grid.Column="6" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Width="75" Click="ExitResultsButton_Click"/>
+        <Button x:Name="SaveResultsButton" Content="Сохранить" Grid.Column="5" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Width="75" Click="SaveResultsButton_Click"/>
+        <GroupBox Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="5,5,5,5" Header="Стратегия">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0">
+                    <Canvas ClipToBounds="True">
+                        <Label Content="ПФО (до 40 сек)" Canvas.Left="5" Canvas.Top="5"/>
+                        <Label x:Name="Before40GreaterStrategy" Content="" Canvas.Left="0" Canvas.Top="25"/>
+                        <Label x:Name="Before40LessStrategy" Content="" Canvas.Left="0" Canvas.Top="45"/>
+                        <Label Content="% - упреждающая" Canvas.Left="30" Canvas.Top="25"/>
+                        <Label Content="% - запаздывающая" Canvas.Left="30" Canvas.Top="45"/>
+                    </Canvas>
+                </Border>
+                <Border Grid.Column="1">
+                    <Canvas ClipToBounds="True">
+                        <Label Content="ППО (после 40 сек)" Canvas.Left="5" Canvas.Top="5"/>
+                        <Label x:Name="After40GreaterStrategy" Content="" Canvas.Left="0" Canvas.Top="25"/>
+                        <Label x:Name="After40LessStrategy" Content="" Canvas.Left="0" Canvas.Top="45"/>
+                        <Label Content="% - упреждающая" Canvas.Left="30" Canvas.Top="25"/>
+                        <Label Content="% - запаздывающая" Canvas.Left="30" Canvas.Top="45"/>
+                    </Canvas>
+                </Border>
+                <Border Grid.ColumnSpan="2" Grid.Row="1">
+                    <Canvas ClipToBounds="True">
+                        <Label Content="КП (35-40 сек)" Canvas.Left="5" Canvas.Top="5"/>
+                        <Label x:Name="Strategy3540" Content="" Canvas.Left="155" Canvas.Top="5"/>
+                        <Label Content="Стратегия ППО" Canvas.Left="5" Canvas.Top="25"/>
+                        <Label x:Name="FinalStrategy" Content="" Canvas.Left="155" Canvas.Top="25"/>
+                    </Canvas>
+                </Border>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,5" Header="Фазы">
+            <Canvas ClipToBounds="True">
+                <Label Content="Восстановления (В)" Canvas.Left="5" Canvas.Top="5"/>
+                <Label Content="Стабилизации (С)" Canvas.Left="5" Canvas.Top="25"/>
+                <Label Content="Распада (Р)" Canvas.Left="5" Canvas.Top="45"/>
+                <Label x:Name="VPhase" Content="" Canvas.Left="120" Canvas.Top="5"/>
+                <Label x:Name="SPhase" Content="" Canvas.Left="120" Canvas.Top="25"/>
+                <Label x:Name="RPhase" Content="" Canvas.Left="120" Canvas.Top="45"/>
+                <Label x:Name="VSRLabel" Content="" Canvas.Left="160" Canvas.Top="25"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,5" Header="Оперативная динамическая память">
+            <Canvas ClipToBounds="True">
+                <Label x:Name="RamLabel" Content="" Canvas.Left="5" Canvas.Top="5"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="3" Margin="5,5,5,5" Header="Результат">
+            <Canvas ClipToBounds="True">
+                <Label Content="№" Canvas.Left="5" Canvas.Top="5"/>
+                <Label Content="ФИО" Canvas.Left="5" Canvas.Top="25"/>
+                <Label Content="Дата" Canvas.Left="5" Canvas.Top="45"/>
+                <Label Content="Уровень&#xD;&#xA;прогнозирования" Canvas.Left="5" Canvas.Top="65" Width="117" Height="44"/>
+                <Label x:Name="NumberLabel" Content="" Canvas.Left="60" Canvas.Top="5"/>
+                <Label x:Name="NameLabel" Content="" Canvas.Left="60" Canvas.Top="25"/>
+                <Label x:Name="DateLabel" Content="" Canvas.Left="60" Canvas.Top="45"/>
+                <Label x:Name="MarkLabel" Content="" Canvas.Left="110" Canvas.Top="65"/>
+            </Canvas>
+        </GroupBox>
+    </Grid>
+</Window>
